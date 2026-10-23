@@ -10,7 +10,7 @@ apps/desktop/dist/
 apps/desktop/src-tauri/gen/
 dist/
 artifacts/
-build/
+/build/
 work/
 data/
 runs/
