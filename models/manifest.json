@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "default": "gtcrn-dns3-v1",
+  "models": [
+    {
+      "id": "gtcrn-dns3-v1",
+      "path": "gtcrn-dns3-v1",
+      "manifest": "gtcrn-dns3-v1/manifest.json",
+      "sha256": "d2ced5e4977085ce91b8147a18de1189c972789bff257ec9c83ae19eed9936bb",
+      "license": "MIT",
+      "upstream": "https://github.com/Xiaobin-Rong/gtcrn",
+      "upstream_commit": "502ebfab64da7c4a9af78dcb9c6ceef1ebb01c73",
+      "origin": "Official DNS3-pretrained GTCRN, converted to explicit-state streaming ONNX",
+      "sample_rate": 16000,
+      "analysis_hop_samples": 256,
+      "transport_hop_samples": 128,
+      "runtime_delay_samples": 384
+    }
+  ]
+}

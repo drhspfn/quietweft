@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "name": "Quietweft GTCRN DNS3",
+  "model_version": "gtcrn-dns3-v1",
+  "model_id": "gtcrn-dns3-v1",
+  "kind": "gtcrn_generic_stream_v1",
+  "model_file": "model.onnx",
+  "model_sha256": "d2ced5e4977085ce91b8147a18de1189c972789bff257ec9c83ae19eed9936bb",
+  "sample_rate": 16000,
+  "fft_size": 512,
+  "hop_size": 256,
+  "feature_bins": 257,
+  "classes": ["noise_suppression"],
+  "defaults": {"noise_suppression": 1.0},
+  "analysis_delay_samples": 256,
+  "runtime_delay_samples": 384,
+  "license": "MIT",
+  "provenance": "provenance.json"
+}

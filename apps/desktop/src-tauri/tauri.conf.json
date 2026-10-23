@@ -1,0 +1,6 @@
+{
+  "$schema":"https://schema.tauri.app/config/2", "productName":"Quietweft", "version":"1.4.4", "identifier":"io.github.drhspfn.quietweft",
+  "build":{"beforeDevCommand":"npm run dev:web","devUrl":"http://localhost:1420","beforeBuildCommand":"npm run build:web","frontendDist":"../dist"},
+  "app":{"windows":[{"label":"main","title":"Quietweft","width":520,"height":650,"minWidth":480,"minHeight":560,"backgroundColor":"#101C29","center":true}],"security":{"csp":"default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; connect-src ipc: http://ipc.localhost"}},
+  "bundle":{"active":false,"icon":["icons/icon.png","icons/icon.ico","icons/icon.icns"]}
+}

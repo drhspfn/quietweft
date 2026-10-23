@@ -1,0 +1,57 @@
+name: Native checks
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['docs/**', 'licenses/**', '**/*.md', '.github/workflows/release.yml']
+  pull_request:
+    paths-ignore: ['docs/**', 'licenses/**', '**/*.md', '.github/workflows/release.yml']
+  workflow_dispatch:
+concurrency:
+  group: checks-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows
+          - os: ubuntu-24.04
+            platform: linux
+          - os: macos-latest
+            platform: macos
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Linux native dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libasound2-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - run: python -m unittest discover -s tests/build -p test_build.py
+      - run: python scripts/build.py --platform ${{ matrix.platform }} --target all
+      - uses: actions/upload-artifact@v4
+        with:
+          name: quietweft-${{ matrix.platform }}
+          path: dist/*.zip
+  training:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU-only PyTorch and training tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -e '.[test]'
+      - run: python -m pytest tests/python

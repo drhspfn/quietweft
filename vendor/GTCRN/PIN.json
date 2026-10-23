@@ -1,0 +1,13 @@
+{
+  "upstream": "https://github.com/Xiaobin-Rong/gtcrn",
+  "commit": "502ebfab64da7c4a9af78dcb9c6ceef1ebb01c73",
+  "license": "MIT",
+  "sha256": {
+    "LICENSE": "1cf6e0ec9010b23bcbe0b336c3329a43c4c24902f976075ba5898bde36aa69b9",
+    "checkpoints/dns3.pt": "250fa2820ea9947704a62dda8e642ba773a067719c5e4294ad95aeab23f06442",
+    "stream/gtcrn.py": "5c72f15c179c156a7595ba36e40a3a2b7c84ce7ebc64f197569f3a791a2cb616",
+    "stream/gtcrn_stream.py": "850cb413b4355c0df65113d1f0a623fc813940a8f14578fdd39a1c20ded2d951",
+    "stream/modules/convert.py": "dbff3a360a720f11fca0b4a4f8bc6bdb3ebb712fa617dfe37df8b31a9c5a586e",
+    "stream/modules/convolution.py": "28465f8a160b8484548ec2e2d8319d5b0650f45079f5abf9d41a8cb15ce2fdf4"
+  }
+}

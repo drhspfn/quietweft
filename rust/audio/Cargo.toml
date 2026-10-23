@@ -1,0 +1,12 @@
+[package]
+name = "quietweft-audio"
+version = "1.4.4"
+edition = "2021"
+license = "MIT"
+[dependencies]
+quietweft-runtime = { path = "../runtime" }
+cpal = "0.15"
+crossbeam-queue = "0.3"
+crossbeam-channel = "0.5"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

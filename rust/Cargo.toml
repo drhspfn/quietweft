@@ -1,0 +1,3 @@
+[workspace]
+members = ["runtime", "audio", "cli"]
+resolver = "2"

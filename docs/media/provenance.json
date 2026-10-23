@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "model_sha256": "d2ced5e4977085ce91b8147a18de1189c972789bff257ec9c83ae19eed9936bb",
+  "cli_sha256": "f462a4b6dbc3ac1238c0e37603ad76be02e33ced1647453b9510fa339a64214c",
+  "sample_rate": 16000,
+  "duration_seconds": 14,
+  "normalization": "One optional peak-safe gain applied to mixture before processing; never independent output normalization.",
+  "spectrogram": {
+    "fft": 512,
+    "hop": 128,
+    "amplitude_dbfs_limits": [
+      -85,
+      -10
+    ]
+  },
+  "speech": {
+    "file": "4236-8927-0054.flac",
+    "sha256": "3af509c57ee4aece4e9b90adbd9a41bd54f0a678a9ab977630c04df41ee36ce3",
+    "source_start_seconds": 0.5,
+    "source_duration_seconds": 12,
+    "scene_onset_seconds": 1,
+    "rms_dbfs": -22
+  },
+  "examples": [
+    {
+      "id": "speech-music",
+      "noise_file": "music-hd-0039.wav",
+      "noise_sha256": "37833a79daaa1030379631e5df583e189e69fbe0924537ffba6088e1567153f1",
+      "noise_rms_dbfs_before_common_gain": -24,
+      "common_gain": 1.0,
+      "noise_source_start_seconds": 30,
+      "noise_event_onsets_seconds": [
+        0
+      ],
+      "noise_excerpt_seconds": 14,
+      "input_pcm_sha256": "71f8f884402566a38ff131d76553e423e01131342c956fdf8d81830e25e98c53",
+      "output_pcm_sha256": "e77f768268c9efae6cfba694b12ce2c77825bcefa1b6bd7c82fcfca23d9a2649"
+    },
+    {
+      "id": "speech-impacts",
+      "noise_file": "noise-sound-bible-0035.wav",
+      "noise_sha256": "c4ab0041abfbe374f8007277b17b85ad0622c9f49222994a483dcf43568fe892",
+      "noise_rms_dbfs_before_common_gain": -24,
+      "common_gain": 0.8972516720777539,
+      "noise_source_start_seconds": 0,
+      "noise_event_onsets_seconds": [
+        2.0,
+        8.8
+      ],
+      "noise_excerpt_seconds": 2.8,
+      "input_pcm_sha256": "e8764d01b7afa82ce450dfb5cadcf2d568a43287382b24540374f69994c81965",
+      "output_pcm_sha256": "b305a4e2aa501a804eff238fa2528e8690b80066ffd7c953d57a34b22e41f1a9"
+    }
+  ]
+}
