@@ -36,6 +36,7 @@ jobs:
       - name: Linux native dependencies
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y build-essential pkg-config libasound2-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - run: python -m unittest discover -s tests/build -p test_build.py
       - run: python scripts/build.py --platform ${{ matrix.platform }} --target all
       - uses: actions/upload-artifact@v4
         with:
