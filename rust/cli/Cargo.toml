@@ -1,0 +1,15 @@
+[package]
+name = "quietweft-cli"
+version = "1.4.4"
+edition = "2021"
+license = "MIT"
+[[bin]]
+name = "quietweft"
+path = "src/main.rs"
+[dependencies]
+quietweft-runtime = { path = "../runtime" }
+quietweft-audio = { path = "../audio" }
+anyhow = "1"
+clap = { version = "4.5", features = ["derive"] }
+hound = "3.5"
+serde_json = "1"
