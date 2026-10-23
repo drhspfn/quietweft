@@ -7,3 +7,5 @@
 *.mp3 binary
 *.mp4 binary
 *.wav binary
+# Keep pinned upstream bytes exactly as verified by vendor/GTCRN/PIN.json.
+vendor/GTCRN/** -text

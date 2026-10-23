@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quietweft"
+version = "1.4.4"
+description = "Explicit, reproducible GTCRN fine-tuning and streaming export"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["numpy>=1.26,<3", "torch>=2.6,<3", "soundfile>=0.12,<1", "scipy>=1.11,<2", "tqdm>=4.66,<5", "onnx>=1.16,<2", "onnxruntime>=1.19,<2"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+media = ["matplotlib>=3.8,<4"]
+
+[project.scripts]
+quietweft-train = "quietweft.train:main"
+
+[tool.setuptools.packages.find]
+where = ["python"]
+
+[tool.setuptools.data-files]
+"share/quietweft/GTCRN" = ["vendor/GTCRN/LICENSE", "vendor/GTCRN/PIN.json"]
+"share/quietweft/GTCRN/stream" = ["vendor/GTCRN/stream/gtcrn.py", "vendor/GTCRN/stream/gtcrn_stream.py"]
+"share/quietweft/GTCRN/stream/modules" = ["vendor/GTCRN/stream/modules/convolution.py", "vendor/GTCRN/stream/modules/convert.py"]
+"share/quietweft/GTCRN/checkpoints" = ["vendor/GTCRN/checkpoints/dns3.pt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+pythonpath = ["python"]
