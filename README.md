@@ -7,6 +7,8 @@ Quietweft processes microphone audio on your computer using the pretrained [GTCR
 
 Version **1.4.4** is the first public release after private development. It preserves the working model rather than presenting an experimental fine-tune as an improvement. This release makes no comparative audio-quality claim.
 
+<p align="center"><img src="docs/screenshots/windows-headphones.png" width="390" alt="Quietweft 1.4.4 running on Windows with microphone and headphone output selection"></p>
+
 ## Download and use
 
 | Package | What's inside |

@@ -33,3 +33,5 @@ File processing compensates the 384-sample delay and preserves the exact input l
 ## Correctness checks
 
 The public runtime was compared with the frozen working private runtime using the same model and a deterministic 16,384-sample sine/noise input: outputs were bit-identical on the reference Windows machine. Native tests cover the pinned model, partial final blocks, delayed bypass, invalid samples and manifest/hash rejection. Python tests execute a small real training run, checkpoint resume and streaming ONNX parity. These checks establish implementation behavior, not perceptual quality.
+
+The extracted Windows desktop package was also launched and checked with a USB microphone and VB-CABLE output: device discovery, starting capture, live meters, switching suppression off while running and stopping capture worked. The headphone route and idle state were checked visually. No microphone recording was retained. This smoke check is not a listening-quality evaluation or latency measurement.
