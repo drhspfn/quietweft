@@ -7,7 +7,7 @@ Rust: depend on `quietweft-runtime` from `rust/runtime`, load `Runtime::load(mod
 C: include `include/quietweft.h` and link against `quietweft_runtime` (`.lib` plus `.dll` on Windows; `.so` on Linux; `.dylib` on macOS). `examples/c/embed.c` demonstrates raw float streaming. Keep the packaged model directory and native dependencies available. The C ABI version is 1. All sample pointers must reference 128 valid float elements; never call a handle concurrently. The runtime checks model SHA256 before initializing ONNX.
 
 ```sh
-cc examples/c/embed.c -Iinclude -L/path/to/package -lquietweft_runtime -o embed
+cc examples/c/embed.c -Iinclude -L/path/to/package -lquietweft_runtime -Wl,-rpath,/path/to/package -o embed
 ./embed /path/to/package/models/gtcrn-dns3-v1 < input.f32 > output.f32
 ```
 
