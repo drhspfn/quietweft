@@ -20,6 +20,16 @@ struct GtcrnSession {
 impl GtcrnSession {
     fn new(env: &ort::environment::Environment, path: &Path) -> Result<Self> {
         let session = Session::builder(env)?
+            // Pin CPU execution: ort defaults to automatic NPU/CoreML selection.
+            // The released model has only been validated on the CPU backend.
+            .with_auto_device(ort::session::builder::AutoDevicePolicy::PreferCPU)
+            .map_err(|error| anyhow!("{error}"))?
+            .with_devices(
+                env.devices()
+                    .filter(|device| device.ep().ok() == Some("CPUExecutionProvider")),
+                None,
+            )
+            .map_err(|error| anyhow!("{error}"))?
             .with_intra_threads(1)
             .map_err(|error| anyhow!("{error}"))?
             .commit_from_file(path)

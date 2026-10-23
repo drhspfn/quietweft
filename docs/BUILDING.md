@@ -4,7 +4,7 @@ Install Rust stable, Python 3.11+, Node.js 20+ and npm. The model is pinned in `
 
 Windows x64: install Visual Studio 2022 Build Tools with **Desktop development with C++** and the Windows SDK. WebView2 is required for the desktop app (included with current Windows 10/11). The script initializes the MSVC environment automatically.
 
-Linux (Ubuntu/Debian):
+Linux (Ubuntu 24.04+ or a compatible recent glibc/libstdc++ distribution):
 
 ```sh
 sudo apt-get install build-essential pkg-config libasound2-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
@@ -20,7 +20,7 @@ python scripts/build.py --platform linux --target cli
 python scripts/build.py --platform macos --target desktop
 ```
 
-Choose your **host** OS; this script does not pretend to cross-compile native audio/WebView dependencies. CI runs on each native OS. Output is a portable folder plus ZIP in `dist`. Existing output folders are never overwritten; select `--output another-folder` for a subsequent build. `--target all` produces separate desktop and CLI/embedding archives. Desktop packaging is portable, not an installer; macOS signing/notarization, Windows ARM64, and Linux distribution-specific packaging are not provided.
+Choose your **host** OS; this script does not pretend to cross-compile native audio/WebView dependencies. CI runs on each native OS. Output is a portable folder plus ZIP in `dist`. Existing output folders are never overwritten; select `--output another-folder` for a subsequent build. `--target all` produces separate desktop and CLI/embedding archives. Desktop packaging is portable, not an installer; macOS signing/notarization, Windows ARM64, and Linux distribution-specific packaging are not provided. The prebuilt ONNX Runtime used by this release requires newer glibc/libstdc++ than Ubuntu 22.04 provides.
 
 Development checks:
 

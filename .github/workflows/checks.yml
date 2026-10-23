@@ -1,8 +1,12 @@
 name: Native checks
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: checks-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 jobs:
   native:
     strategy:
@@ -11,7 +15,7 @@ jobs:
         include:
           - os: windows-latest
             platform: windows
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             platform: linux
           - os: macos-latest
             platform: macos
@@ -36,7 +40,7 @@ jobs:
           name: quietweft-${{ matrix.platform }}
           path: dist/*.zip
   training:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
