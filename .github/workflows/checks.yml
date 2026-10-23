@@ -2,7 +2,9 @@ name: Native checks
 on:
   push:
     branches: [main]
+    paths-ignore: ['docs/**', 'licenses/**', '**/*.md', '.github/workflows/release.yml']
   pull_request:
+    paths-ignore: ['docs/**', 'licenses/**', '**/*.md', '.github/workflows/release.yml']
   workflow_dispatch:
 concurrency:
   group: checks-${{ github.head_ref || github.ref_name }}
