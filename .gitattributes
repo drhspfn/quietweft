@@ -9,3 +9,4 @@
 *.wav binary
 # Keep pinned upstream bytes exactly as verified by vendor/GTCRN/PIN.json.
 vendor/GTCRN/** -text -whitespace
+licenses/** -text -whitespace

@@ -1,7 +1,7 @@
 {
   "findings": [],
   "mode": "strict",
-  "projectRoot": "E:\\Projects\\quietweft",
+  "projectRoot": ".",
   "schemaVersion": 1,
   "summary": {
     "errors": 0,

@@ -2,7 +2,7 @@
 
 Install Rust stable, Python 3.11+, Node.js 20+ and npm. The model is pinned in `models/gtcrn-dns3-v1` and included in packages. Builds do not download training datasets or virtual audio drivers. Cargo may download ONNX Runtime binaries while compiling; npm/Cargo download dependencies on first use.
 
-Windows: install Visual Studio 2022 Build Tools with **Desktop development with C++** and the Windows SDK. WebView2 is required for the desktop app (included with current Windows 10/11). The script initializes the MSVC environment automatically.
+Windows x64: install Visual Studio 2022 Build Tools with **Desktop development with C++** and the Windows SDK. WebView2 is required for the desktop app (included with current Windows 10/11). The script initializes the MSVC environment automatically.
 
 Linux (Ubuntu/Debian):
 
@@ -20,7 +20,7 @@ python scripts/build.py --platform linux --target cli
 python scripts/build.py --platform macos --target desktop
 ```
 
-Choose your **host** OS; this script does not pretend to cross-compile native audio/WebView dependencies. CI runs on each native OS. Output is a portable folder plus ZIP in `dist`. Existing output folders are never overwritten; select `--output another-folder` for a subsequent build. `--target all` produces separate desktop and CLI/embedding archives. Desktop packaging is portable, not an installer; macOS signing/notarization and Linux distribution-specific packaging are not provided.
+Choose your **host** OS; this script does not pretend to cross-compile native audio/WebView dependencies. CI runs on each native OS. Output is a portable folder plus ZIP in `dist`. Existing output folders are never overwritten; select `--output another-folder` for a subsequent build. `--target all` produces separate desktop and CLI/embedding archives. Desktop packaging is portable, not an installer; macOS signing/notarization, Windows ARM64, and Linux distribution-specific packaging are not provided.
 
 Development checks:
 
@@ -33,3 +33,4 @@ npm run desktop:dev
 ```
 
 Optional `CARGO_TARGET_DIR` shares a compiled cache. ONNX Runtime and MSVC redistributables retain their upstream licenses. Unsigned desktop binaries may trigger OS download warnings; published artifacts are accompanied by hashes, not a code-signing identity.
+
