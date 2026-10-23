@@ -1,7 +1,7 @@
 {
   "format": 1,
   "model_sha256": "d2ced5e4977085ce91b8147a18de1189c972789bff257ec9c83ae19eed9936bb",
-  "cli_sha256": "f1634ee882a37794ec1535af88067da335cf065f46eb4af78b2b311778eae44f",
+  "cli_sha256": "f462a4b6dbc3ac1238c0e37603ad76be02e33ced1647453b9510fa339a64214c",
   "sample_rate": 16000,
   "duration_seconds": 14,
   "normalization": "One optional peak-safe gain applied to mixture before processing; never independent output normalization.",

@@ -15,12 +15,13 @@ Command, run inside the extracted CLI package:
 | Measurement | Observed |
 | --- | ---: |
 | Generated input duration | 10 seconds |
-| Mean processing time per 128-sample transport block | 468.324 µs |
-| Maximum observed transport-block processing time | 2297.5 µs |
-| Processing real-time factor | 0.05854 |
+| Median of five mean processing times per 128-sample transport block | 495.430 µs |
+| Range of the five per-run means | 466.923–546.880 µs |
+| Maximum observed transport-block processing time across all runs | 10897.1 µs |
+| Median processing real-time factor | 0.06193 |
 | Algorithmic delay | 384 samples / 24 ms at 16 kHz |
 
-This is a single run under the machine's current workload, not a universal bound. The generated input is a sine signal. `benchmark input.wav` measures a particular recording instead. Model initialization and file decoding are outside the processing timer. Initial inference is included; the final zero blocks flush the recording. Every second transport block runs a model hop, so transport timings include both inexpensive scheduling blocks and inference blocks. There is no percentile estimate in this measurement.
+These are five consecutive runs under the machine's current workload, not a universal bound. The 10.897 ms maximum includes an outlier; it is retained rather than discarded. The generated input is a sine signal. `benchmark input.wav` measures a particular recording instead. Model initialization and file decoding are outside the processing timer. Initial inference is included; the final zero blocks flush the recording. Every second transport block runs a model hop, so transport timings include both inexpensive scheduling blocks and inference blocks. There is no percentile estimate in this measurement. [Raw results and executable SHA256](measurements/windows-cpu-1.4.4.json).
 
 The real-time factor divides accumulated processing time by processed audio duration; lower than 1 means that this run processed faster than real time. It is not total process CPU utilization or a guarantee against audio dropouts.
 

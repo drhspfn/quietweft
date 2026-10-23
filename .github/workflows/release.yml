@@ -50,7 +50,18 @@ jobs:
           path: release-assets
       - name: Include pinned model as a standalone asset
         run: python -c "import shutil,tomllib; v=tomllib.load(open('rust/runtime/Cargo.toml','rb'))['package']['version']; shutil.make_archive(f'release-assets/quietweft-{v}-model-gtcrn-dns3-v1','zip','models','gtcrn-dns3-v1')"
+      - name: Preserve an already published release
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" --json isDraft --jq .isDraft > existing-release.txt 2>/dev/null && grep -qx false existing-release.txt; then
+            echo 'publish=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'publish=true' >> "$GITHUB_OUTPUT"
+          fi
       - uses: softprops/action-gh-release@v2
+        if: steps.existing.outputs.publish == 'true'
         with:
           draft: true
           files: release-assets/*
