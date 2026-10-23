@@ -1,0 +1,50 @@
+.comparison-player{--comparison-mint:var(--accent,#6ce4d1);--comparison-lavender:var(--accent-secondary,#b6adff);--comparison-muted:var(--text-muted,#a4b4c5);font-family:inherit;color:var(--text,#eef4fa)}
+.comparison-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.comparison-heading h3{font-size:18px;font-weight:650;margin:0 0 6px;letter-spacing:-.025em}
+.comparison-heading p{font-size:13px;color:var(--comparison-muted);margin:0;line-height:1.5}
+.comparison-player button{font-family:inherit;cursor:pointer;transition:background .15s,border-color .15s;flex-shrink:0}
+.comparison-stop{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--border,#344556);border-radius:8px;background:transparent;color:inherit;min-height:36px;padding:6px 12px;font-size:12px}
+.comparison-stop:hover:enabled{background:#263749;border-color:#8796aa}
+.comparison-track{--comparison-color:var(--comparison-mint);padding:18px 20px;background:var(--surface-raised,#172431);border:1px solid var(--border,#344556);border-radius:12px;margin-top:12px;min-width:0}
+.comparison-after{--comparison-color:var(--comparison-lavender)}
+.comparison-track-heading,.comparison-track-footer{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.comparison-track-name{font-size:14px;font-weight:650;color:var(--comparison-color)}
+.comparison-track-status{font-size:11px;line-height:1.4;color:var(--comparison-muted);text-align:right}
+.comparison-track-body{display:flex;align-items:center;gap:18px;min-height:112px}
+.comparison-play{display:grid;place-items:center;width:44px;height:44px;border:1px solid color-mix(in srgb,var(--comparison-color) 45%,transparent);border-radius:50%;color:var(--comparison-color);background:color-mix(in srgb,var(--comparison-color) 10%,transparent)}
+.comparison-play:hover:enabled{background:color-mix(in srgb,var(--comparison-color) 22%,transparent);border-color:var(--comparison-color)}
+.comparison-play[aria-pressed=true]{background:var(--comparison-color);color:#10212b}
+.comparison-play svg{display:block}
+.comparison-waveform{position:relative;flex:1;min-width:0;height:100px;isolation:isolate}
+.comparison-waveform svg{display:block;width:100%;height:100%;overflow:hidden}
+.comparison-baseline{stroke:#3c4c5c;stroke-width:.8}
+.comparison-peaks{stroke:var(--comparison-color);opacity:.35}
+.comparison-peaks-played{stroke:var(--comparison-color)}
+.comparison-scrubber{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;appearance:none!important;-webkit-appearance:none!important;background:transparent!important;cursor:ew-resize!important;border:0!important;border-radius:3px!important;opacity:1!important;z-index:2;touch-action:pan-y;box-shadow:none!important}
+.comparison-scrubber::-webkit-slider-runnable-track{height:100%;background:transparent;border:0}
+.comparison-scrubber::-moz-range-track{height:100%;background:transparent;border:0}
+.comparison-scrubber::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;height:100px;width:2px;border:0;border-radius:0;background:var(--comparison-color);box-shadow:0 0 8px #ffffff25}
+.comparison-scrubber::-moz-range-thumb{height:100px;width:2px;border:0;border-radius:0;background:var(--comparison-color)}
+.comparison-scrubber:focus-visible{outline:2px solid var(--comparison-color)!important;outline-offset:5px}
+.comparison-time{font:12px Consolas,'Courier New',monospace;color:inherit;white-space:nowrap;font-variant-numeric:tabular-nums}
+.comparison-time span{color:var(--comparison-muted)}
+.comparison-file-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.comparison-download{display:inline-flex;align-items:center;gap:5px;min-height:28px;font-size:11px;color:var(--comparison-color);border-radius:4px;text-decoration:none;padding:3px 4px;white-space:nowrap;border:0;background:transparent;cursor:pointer;font-family:inherit}
+.comparison-download:disabled{opacity:.6;cursor:wait}
+.comparison-save-status{font-size:12px;color:var(--text-muted);overflow-wrap:anywhere}
+.comparison-download:hover{background:color-mix(in srgb,var(--comparison-color) 12%,transparent);text-decoration:underline}
+.comparison-download:focus-visible{outline:2px solid var(--comparison-color);outline-offset:3px}
+.comparison-volume{display:flex;align-items:center;gap:8px;color:var(--comparison-muted);font-size:11px;min-width:0}
+.comparison-volume input{appearance:auto!important;-webkit-appearance:auto!important;width:86px!important;height:18px!important;padding:0!important;margin:0!important;cursor:pointer;accent-color:var(--comparison-color);background:transparent!important;border:0!important;box-shadow:none!important}
+.comparison-volume output{font:11px Consolas,'Courier New',monospace;min-width:34px;text-align:right}
+.comparison-volume-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.comparison-player button:focus-visible,.comparison-volume input:focus-visible{outline:2px solid var(--comparison-color,var(--comparison-mint));outline-offset:4px}
+.comparison-player button:disabled,.comparison-player input:disabled{cursor:not-allowed!important;opacity:.4}
+.comparison-empty{display:flex;align-items:center;justify-content:center;gap:14px;min-height:174px;padding:24px;border:1px dashed var(--border,#344556);border-radius:12px;color:var(--comparison-muted);text-align:left}
+.comparison-empty p{max-width:300px;font-size:13px;line-height:1.6;margin:0}
+.comparison-output-empty{color:var(--comparison-muted);font-size:12px;line-height:1.5}
+.comparison-no-peaks{position:absolute;top:10px;right:0;font-size:10px;color:var(--comparison-muted);pointer-events:none}
+.comparison-error{border-left:3px solid #ffb6ac;background:#ffb6ac0c;padding:12px 14px;color:#ffd5ce;font-size:12px;line-height:1.5;border-radius:3px;margin:14px 0 0}
+@media(max-width:620px){.comparison-heading{align-items:flex-start}.comparison-heading p{max-width:230px}.comparison-track{padding:16px 12px}.comparison-track-body{gap:12px}.comparison-volume input{width:68px!important}.comparison-track-status{max-width:150px}}
+@media(prefers-reduced-motion:reduce){.comparison-player button{transition:none}}
+@media(forced-colors:active){.comparison-play,.comparison-stop,.comparison-track{border-color:ButtonText}.comparison-peaks,.comparison-peaks-played{stroke:CanvasText}.comparison-scrubber::-webkit-slider-thumb{background:Highlight}.comparison-scrubber::-moz-range-thumb{background:Highlight}}
