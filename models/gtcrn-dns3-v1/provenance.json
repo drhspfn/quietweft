@@ -1,0 +1,18 @@
+{
+  "upstream": "https://github.com/Xiaobin-Rong/gtcrn",
+  "upstream_commit": "502ebfab64da7c4a9af78dcb9c6ceef1ebb01c73",
+  "copyright": "2024 Rong Xiaobin",
+  "license": "MIT",
+  "checkpoint": "stream/onnx_models/model_trained_on_dns3.tar",
+  "checkpoint_sha256": "250fa2820ea9947704a62dda8e642ba773a067719c5e4294ad95aeab23f06442",
+  "source_sha256": "5c72f15c179c156a7595ba36e40a3a2b7c84ce7ebc64f197569f3a791a2cb616",
+  "conversion_sources": {
+    "stream/gtcrn_stream.py": "850cb413b4355c0df65113d1f0a623fc813940a8f14578fdd39a1c20ded2d951",
+    "stream/modules/convolution.py": "28465f8a160b8484548ec2e2d8319d5b0650f45079f5abf9d41a8cb15ce2fdf4",
+    "stream/modules/convert.py": "dbff3a360a720f11fca0b4a4f8bc6bdb3ebb712fa617dfe37df8b31a9c5a586e"
+  },
+  "onnx_sha256": "d2ced5e4977085ce91b8147a18de1189c972789bff257ec9c83ae19eed9936bb",
+  "conversion": "Explicit streaming caches; FFT512 / hop256; sqrt periodic Hann; CPU inference",
+  "fine_tuned_for_quietweft": false,
+  "numerical_verification": "Batch/stream ONNX and native implementation agreement was checked separately from audio quality. See docs/MEASUREMENTS.md."
+}
