@@ -11,6 +11,15 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+WINDOWS_CRT_FILES = ('msvcp140.dll', 'msvcp140_1.dll', 'vcruntime140.dll', 'vcruntime140_1.dll')
+
+def windows_crt_directory(redist_root):
+    # Toolset releases change the VCxxx directory name while retaining DLL names.
+    candidates = sorted((Path(redist_root) / 'x64').glob('Microsoft.VC*.CRT'), reverse=True)
+    for candidate in candidates:
+        if all((candidate / name).is_file() for name in WINDOWS_CRT_FILES):
+            return candidate
+    raise RuntimeError(f'Complete x64 VC runtime redistributables not found under {redist_root}')
 
 def run(command, cwd=ROOT, env=None):
     print('+', ' '.join(map(str, command)), flush=True)
@@ -98,9 +107,8 @@ def main():
         for pattern in ('onnxruntime*.dll','libonnxruntime*.so*','libonnxruntime*.dylib','DirectML.dll'):
             for dependency in release.glob(pattern): shutil.copy2(dependency,dest)
         if host == 'windows':
-            redist = Path(env.get('VCToolsRedistDir','')) / 'x64/Microsoft.VC143.CRT'
-            for name in ('msvcp140.dll','msvcp140_1.dll','vcruntime140.dll','vcruntime140_1.dll'):
-                if not (redist/name).exists(): raise RuntimeError(f'Missing redistributable {redist/name}')
+            redist = windows_crt_directory(env.get('VCToolsRedistDir',''))
+            for name in WINDOWS_CRT_FILES:
                 shutil.copy2(redist/name,dest)
         hashes={str(p.relative_to(dest)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}
         (dest/'checksums.json').write_text(json.dumps(hashes,indent=2)+'\n',encoding='utf-8')
