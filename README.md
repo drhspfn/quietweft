@@ -40,6 +40,10 @@ The runtime uses 16 kHz mono audio, 256-sample model hops and 128-sample transpo
 
 Input and output examples use the same gain and spectrogram scale. They illustrate behavior and are not a quality benchmark. [Audio/video comparisons, sources and reproduction →](docs/EXAMPLES.md)
 
+| Speech + piano: input | Output |
+| --- | --- |
+| [![Input spectrogram](docs/media/speech-music-input.png)](docs/media/speech-music-input.mp4) | [![Output spectrogram](docs/media/speech-music-output.png)](docs/media/speech-music-output.mp4) |
+
 ## Train a candidate
 
 Install [uv](https://docs.astral.sh/uv/), then from a checkout:

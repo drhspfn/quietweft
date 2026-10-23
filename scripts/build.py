@@ -49,9 +49,17 @@ def main():
     host = {'Windows':'windows','Linux':'linux','Darwin':'macos'}[platform.system()]
     if args.platform != host:
         parser.error(f'--platform {args.platform} requires a {args.platform} host; use GitHub Actions for other systems')
-    machine = platform.machine().lower()
-    arch = 'arm64' if machine in ('arm64','aarch64') else 'x64' if machine in ('x86_64','amd64') else machine
     env = toolchain_environment()
+    rustc = shutil.which('rustc', path=env['PATH'])
+    if not rustc:
+        raise RuntimeError('Rust stable is required; install rustup first')
+    rust_host = next(line.split(': ', 1)[1] for line in subprocess.check_output([rustc, '-vV'], text=True, env=env).splitlines() if line.startswith('host: '))
+    requested_target = env.get('CARGO_BUILD_TARGET', rust_host)
+    if requested_target != rust_host:
+        parser.error('CARGO_BUILD_TARGET must match the installed native Rust host for this packaging script')
+    arch = 'arm64' if rust_host.startswith('aarch64-') else 'x64' if rust_host.startswith('x86_64-') else rust_host.split('-')[0]
+    if host == 'windows' and arch != 'x64':
+        parser.error('Windows packaging currently requires the x86_64-pc-windows-msvc Rust toolchain')
     target = Path(env.get('CARGO_TARGET_DIR', ROOT / 'rust/target')).resolve()
     env['CARGO_TARGET_DIR'] = str(target)
     if not args.skip_tests:
